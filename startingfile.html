@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset='UTF-8'>
+<script>
+
+function validateLogin(form) 
+{
+var reName = /^[a-zA-Z]+$/
+
+// first name - Make certain there is only 1 name in the box for First Name and Last Name and it is made up of letters only.
+
+if(!reName.test(form.fname.value))
+	{
+	alert("Please Type a First Name");
+	return false;
+	}
+if(!reName.test(form.lname.value))
+	{
+	alert("Please Type a Last Name");
+	return false;
+	}
+if(form.password.value=='')
+	{
+	alert("Please Type a Password");
+	return false;
+	}
+return true;
+}	
+
+function validateQuiz(form) 
+{
+// Make certain they select an answer to each question
+
+	var question_1 = -1;
+	for(i = 0; i < form.question1.length; i++)
+	{
+		if(form.question1[i].checked)
+		{
+		question_1 = i;
+		}
+	}
+	if(question_1 == -1)
+	{
+	alert("Please select an answer to question 1");
+	return false;
+	}
+
+	var question_2 = -1;
+	for(i = 0; i < form.question2.length; i++)
+	{
+		if(form.question2[i].checked)
+		{
+		question_2 = i;
+		}
+	}
+	if(question_2 == -1)
+	{
+	alert("Please select an answer to question 2");
+	return false;
+	}
+
+return true;
+}
+
+</script>
+
+
+<title>Cisw 310 - Chris Putnam's Project</title>
+</head>
+<body>
+<br>
+<form method="post" action="" onsubmit="return validateLogin(this)">
+<fieldset>
+<legend>Create Account</legend>
+<input type="text" name="fname">First Name<br><br>
+<input type="text" name="lname">Last Name<br><br>
+<input type="text" name="password">Password<br><br>
+<input type='submit' name='create' value='Create Account'>
+</fieldset>
+</form>
+
+<form method="post" action="" onsubmit="return validateQuiz(this)">
+<fieldset>
+<legend>The Quiz</legend>
+<!-- QUESTION 1 -->
+<h3>Please choose the answer to question 1:</h3>
+<input type="radio" name="question1" value="0">0
+<input type="radio" name="question1" value="1">1
+<input type="radio" name="question1" value="2">2
+<input type="radio" name="question1" value="3">3
+<input type="radio" name="question1" value="4">4
+<input type="radio" name="question1" value="5">5+
+
+<!-- QUESTION 2 -->
+<h3>Please choose the answer to question 2:</h3>
+<input type="radio" name="question2" value="0">0 
+<input type="radio" name="question2" value="1">1  
+<input type="radio" name="question2" value="2">2 
+<input type="radio" name="question2" value="3">3  
+<input type="radio" name="question2" value="4">4  
+<input type="radio" name="question2" value="5">5+ <br><br>
+
+<input type='submit' name='quiz' value='Submit'>
+</form>
+
+<br>
+<a href="index.html">home</a>
+</body>
+</html>
